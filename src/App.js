@@ -1,24 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Custom.scss';
+
+import Navigation from './Navigation';
+import Footer from './Footer';
+
+import Home from './Home/Home';
+import Discover from './Discover/Discover';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navigation/>
+
+      <Switch>
+        <Route path="/discover">
+          <Discover/>
+        </Route>
+        <Route path="/mapping">
+          <h1>Mapping the NWC</h1>
+        </Route>
+        <Route path="/contribute">
+          <h1>Why contribute?</h1>
+        </Route>
+        <Route path="/why-matters">
+          <h1>Why the NWC Matters</h1>
+        </Route>
+        <Route path="/how-contribute">
+          <h1>How to Contribute</h1>
+        </Route>
+        <Route path="/">
+          <Home/>
+        </Route>
+      </Switch>
+
+      <Footer/>
+    </Router>
   );
 }
 

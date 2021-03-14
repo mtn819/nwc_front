@@ -1,0 +1,65 @@
+$theme-colors: (
+  "primary": #FFBCB5,
+  "secondary": #747C92,
+  "success": #5FB49C,
+  "danger": #EC0B43,
+  "warning": #9D8420,
+  "info": #B6465F,
+  "light": #F2E5D7,
+  "dark": #2C0703,
+  "muted": #54442B,
+);
+
+@import 'bootstrap/scss/bootstrap.scss';
+
+/*font*/
+
+@import url('https://fonts.googleapis.com/css2?family=Castoro&family=Cutive+Mono&display=swap');
+
+* {
+  font-family: 'Castoro', serif;
+}
+
+/*util*/
+
+
+.filter-brightness-50{
+  filter: brightness(50%);
+}
+
+.minh-250px{
+  min-height: 250px;
+}
+
+.minh-300px{
+  min-height: 300px;
+}
+
+.maxh-400px{
+  max-height: 400px;
+}
+
+.pointer-events-none{
+  pointer-events: none;
+}
+
+.border-4px {
+  border-width: 4px !important;
+}
+
+.text-indent-8px {
+  text-indent: 8px;
+}
+
+.hover-accent:hover{
+  filter: brightness(69%);
+  transform: scale(1.01);
+}
+
+/*specific targets*/
+
+@include media-breakpoint-up(md){
+  .minh-md-400px{
+    min-height: 400px;
+  }
+}
