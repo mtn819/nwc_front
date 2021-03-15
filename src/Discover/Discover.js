@@ -61,6 +61,7 @@ function Discover(props) {
 
       <Row>
         { 
+          stories.length > 0 ?
           stories.map(story => (
             <Col xs={6} sm={4} md={3} xl={2}>
               {
@@ -72,6 +73,7 @@ function Discover(props) {
               }
             </Col>
           ))
+          : <Col>Loading...</Col>
         }
       </Row>
 
