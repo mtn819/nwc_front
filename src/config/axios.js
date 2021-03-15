@@ -6,7 +6,7 @@ const instance = axios.create({
   /*httpsAgent: new https.Agent({
     rejectUnauthorized: false,
   }),*/
-  baseURL: 'http://localhost:1337/',
+  baseURL: 'http://nwc-backend-mockup-14march2021.herokuapp.com/',
 });
 
 export default instance;
