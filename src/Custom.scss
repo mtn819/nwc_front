@@ -68,8 +68,6 @@ a.no-underline:active{
   text-decoration: none;
 }
 
-/*specific targets*/
-
 @include media-breakpoint-up(md){
   .minh-md-400px{
     min-height: 400px;
