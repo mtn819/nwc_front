@@ -1,59 +1,86 @@
-import React, { useState } from 'react';
-import {Container, Row, Col, Button} from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import {Container, Row, Col, Button, Form} from 'react-bootstrap';
 
 import TopBrief from "./TopBrief";
-import SearchBar from './SearchBar';
-import CaretOption from './CaretOption';
-import StoryBoard from './StoryBoard';
-
-import Splitta from './Splitta';
+import StoryCard from "./StoryCard";
+import { Search } from 'react-bootstrap-icons';
+import axios from '../config/axios';
+import { email } from '../config/contact';
 
 function Discover(props) {
-  const imgUrls = [
-    "https://washington.org/sites/default/files/ckeditor-images/shall-not-be-denied-banner.jpg",
-    "https://s.yimg.com/aah/yhst-94666432756749/fight-for-women-s-rights-wreath-ornament-by-christopher-radko-4.png",
-    "https://pbs.twimg.com/media/DikukLKW0AEWOwA.jpg",
-  ]
+  const [stories, setStories] = useState([]);
+
+  useEffect(() => {
+    async function fetchData(){
+      const req = await axios.get('/stories');
+
+      setStories(req.data);
+    };
+
+    fetchData();
+  }, []);
 
   return (
-    <Container className="bg-light pl-md-5 pr-md-5" fluid>
+    <Container className="bg-light pl-md-5 pr-md-5 pb-2" fluid>
 
-      <Row>
-        <Col className="mt-2">
+      <Row className="pt-2">
+        <Col>
           <TopBrief/>
         </Col>
       </Row>
 
-      <Row>
-        <Col className="mb-2 mb-md-0" xs={12} md={6}>
-          <SearchBar/>
-        </Col>
-        <Col xs={6} md={3}>
-          <Button className="w-100">Add Story</Button>
-        </Col>
-        <Col xs={6} md={3}>
-          <Button className="w-100">View Maps</Button>
-        </Col>
-      </Row>
-
-      <Splitta/>
-
-      <Row>
-        <Col sm={2}></Col>
-        <CaretOption
-          title="Name"/>
-        <CaretOption
-          title="State/Territory"/>
-        <CaretOption
-          title="Role"/>
-      </Row>
-
-      <Splitta/>
-
+      {/**Search */}
       <Row className="pb-2">
-        <StoryBoard/>
+        <Col xs={12} md={6}>
+          <Form>
+            <Form.Row>
+              <Col>
+                <Form.Control type="text" placeholder="search"/>
+              </Col>
+              <Col xs="auto">
+                <Button type="button"><Search/></Button>
+              </Col>
+            </Form.Row>
+          </Form>
+        </Col>
+
+        <Col className="mt-2 mt-md-0" xs={12} md={3}>
+          <Button className="w-100" type="button" href={`mailto:${email}`}>Add Story</Button>
+        </Col>
+
+        <Col className="mt-2 mt-md-0" xs={12} md={3}>
+          <Button className="w-100" type="button">Maps</Button>
+        </Col>
       </Row>
-      
+
+      <Row>
+        <Col>
+          <hr/>
+        </Col>
+      </Row>
+
+      <Row>
+        { 
+          stories.map(story => (
+            <Col xs={6} sm={4} md={2}>
+              {
+                <StoryCard
+                  id={story.id}
+                  title={story.title}
+                  thumbnail={story.thumbnail[0].name}
+                />
+              }
+            </Col>
+          ))
+        }
+      </Row>
+
+      <Row>
+        <Col>
+          <hr/>
+        </Col>
+      </Row>
+
     </Container>
   );
 }

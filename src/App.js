@@ -13,6 +13,7 @@ import Footer from './Footer';
 
 import Home from './Home/Home';
 import Discover from './Discover/Discover';
+import Story from './Story/Story';
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
         </Route>
         <Route path="/how-contribute">
           <h1>How to Contribute</h1>
+        </Route>
+        <Route path="/story/:id">
+          <Story/>
         </Route>
         <Route path="/">
           <Home/>

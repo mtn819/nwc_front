@@ -1,7 +1,12 @@
 import axios from 'axios';
+import https from 'https';
+
 
 const instance = axios.create({
-  baseURL: 'https://localhost:1337/'
+  /*httpsAgent: new https.Agent({
+    rejectUnauthorized: false,
+  }),*/
+  baseURL: 'http://localhost:1337/',
 });
 
 export default instance;

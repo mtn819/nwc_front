@@ -39,6 +39,10 @@ $theme-colors: (
   max-height: 400px;
 }
 
+.maxw-600px{
+  max-width: 600px;
+}
+
 .pointer-events-none{
   pointer-events: none;
 }
@@ -54,6 +58,14 @@ $theme-colors: (
 .hover-accent:hover{
   filter: brightness(69%);
   transform: scale(1.01);
+}
+
+a.no-underline:hover{
+  text-decoration: none;
+}
+
+a.no-underline:active{
+  text-decoration: none;
 }
 
 /*specific targets*/
