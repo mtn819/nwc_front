@@ -62,7 +62,7 @@ function Discover(props) {
       <Row>
         { 
           stories.map(story => (
-            <Col xs={6} sm={4} md={2}>
+            <Col xs={6} sm={4} md={3} xl={2}>
               {
                 <StoryCard
                   id={story.id}

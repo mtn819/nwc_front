@@ -29,8 +29,6 @@ function Story(props) {
       setMoreStories(
         req.data
         .filter(moreStory => moreStory.id !== story.id));
-
-      console.log(moreStories);
     };
 
     fetchData();
@@ -85,7 +83,7 @@ function Story(props) {
       <Row className="text-center">
         {
           moreStories.map(moreStory => (
-            <Col xs={6} sm={4} md={2}>
+            <Col xs={6} sm={4} md={3} xl={2}>
               <StoryCard
                 id={moreStory.id}
                 title={moreStory.title}
