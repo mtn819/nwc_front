@@ -39,10 +39,12 @@ function Story(props) {
     <Container className="bg-light pb-4" fluid>
 
       {/**Heading */}
-      <Row className="text-center pt-2 pb-2 shadow-sm">
+      <Row className="bg-primary text-center pt-2 pb-2 shadow">
         <Col xs={12}><h1>{story.title}</h1></Col>
 
         <Col xs={12}>Author: {story.author}</Col>
+
+        <Col xs={12}>Published: {(new Date(story.published_at)).toDateString()}</Col>
 
         {story.location ? 
         <Col xs={12}><Geo/> {story.location}</Col>

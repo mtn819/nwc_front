@@ -15,7 +15,12 @@ import Home from './Home/Home';
 import Discover from './Discover/Discover';
 import Story from './Story/Story';
 
+import axios from './config/axios';
+
 function App() {
+  //WAKEUP SERVER!!!
+  axios.get('/');
+
   return (
     <Router>
       <Navigation/>
